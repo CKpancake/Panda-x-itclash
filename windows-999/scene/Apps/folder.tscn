@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://jj2kwm40aqmn"]
+
+[ext_resource type="PackedScene" uid="uid://djj4yyfukflq8" path="res://scene/Apps/#base_app.tscn" id="1_3t7fv"]
+[ext_resource type="PackedScene" uid="uid://c7lqbmoqirmdj" path="res://scene/Windows/folder_window.tscn" id="2_3tlk1"]
+
+[node name="Folder" unique_id=1138811342 instance=ExtResource("1_3t7fv")]
+app_properties = 1
+window = ExtResource("2_3tlk1")
+
+[node name="Label" parent="Sprite_Group" parent_id_path=PackedInt32Array(748937213) index="3" unique_id=1831237444]
+text = "Folder"

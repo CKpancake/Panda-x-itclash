@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bnmj17tts8v05"]
+
+[ext_resource type="PackedScene" uid="uid://djj4yyfukflq8" path="res://scene/Apps/#base_app.tscn" id="1_ctrfo"]
+[ext_resource type="PackedScene" uid="uid://dvb336wymrcb7" path="res://scene/Windows/recyclebin_window.tscn" id="2_oqwrn"]
+[ext_resource type="Texture2D" uid="uid://drssg33geqqdh" path="res://sprite/App_icons.png" id="3_o4p0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ekth"]
+atlas = ExtResource("3_o4p0j")
+region = Rect2(0, 0, 64, 64)
+
+[node name="Trash_Bin" unique_id=1138811342 instance=ExtResource("1_ctrfo")]
+app_properties = 1
+window = ExtResource("2_oqwrn")
+texture_icon = SubResource("AtlasTexture_6ekth")

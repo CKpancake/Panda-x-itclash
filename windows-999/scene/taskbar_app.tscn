@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://56qm250gjqs4"]
+
+[ext_resource type="Texture2D" uid="uid://drssg33geqqdh" path="res://sprite/App_icons.png" id="1_4657o"]
+[ext_resource type="Script" uid="uid://dlokcfhifguvr" path="res://scene/position_taskbar.gd" id="2_3p245"]
+[ext_resource type="Script" uid="uid://dkh88cw74auq1" path="res://scene/selection_highlight.gd" id="3_h8dc8"]
+
+[sub_resource type="Gradient" id="Gradient_0o85u"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3p245"]
+gradient = SubResource("Gradient_0o85u")
+
+[node name="Taskbar_App" type="Button" unique_id=224636549]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 300
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=242615654]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("1_4657o")
+
+[node name="Position_Taskbar" type="Node" parent="." unique_id=609327023]
+script = ExtResource("2_3p245")
+
+[node name="HoverBox" type="TextureRect" parent="." unique_id=1296609324]
+visible = false
+modulate = Color(1, 1, 1, 0.05882353)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.62461656, 0.62461656)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_3p245")
+
+[node name="Open_Window" type="Node" parent="." unique_id=1515674788]
+script = ExtResource("3_h8dc8")

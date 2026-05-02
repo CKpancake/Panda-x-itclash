@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://c7lqbmoqirmdj"]
+
+[ext_resource type="PackedScene" uid="uid://c6ygia1kpm5gq" path="res://scene/Windows/#base_window.tscn" id="1_iluy7"]
+[ext_resource type="Script" uid="uid://dy357143ipgpc" path="res://scene/Windows/inventory.gd" id="2_wxjey"]
+[ext_resource type="Script" uid="uid://b0d8f88l0gs1k" path="res://scene/Windows/Folder_Item.gd" id="3_ukbuy"]
+[ext_resource type="Texture2D" uid="uid://drssg33geqqdh" path="res://sprite/App_icons.png" id="4_smax8"]
+[ext_resource type="LabelSettings" uid="uid://dxtahmitrrykp" path="res://TextBlack.tres" id="5_66gbd"]
+[ext_resource type="LabelSettings" uid="uid://b1uas6mmrybmm" path="res://Text.tres" id="6_lfssd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvd6j"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ogyp"]
+bg_color = Color(0.3019608, 0.3019608, 0.3019608, 0.7529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcxjr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22352941, 0.22352941, 0.22352941, 0.3254902)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uqkk"]
+atlas = ExtResource("4_smax8")
+region = Rect2(0, 64, 64, 64)
+
+[node name="Base_Window" unique_id=777421535 instance=ExtResource("1_iluy7")]
+
+[node name="NinePatchRect" parent="." index="0" unique_id=1640479298]
+offset_right = 384.0
+offset_bottom = 256.0
+
+[node name="Close" parent="." index="6" unique_id=1435366488]
+offset_left = 342.0
+offset_right = 360.0
+
+[node name="Minimize" parent="." index="7" unique_id=1509821338]
+offset_left = 301.0
+offset_right = 319.0
+
+[node name="Label" parent="." index="8" unique_id=936641812]
+text = "Folder"
+
+[node name="Inventory" type="ScrollContainer" parent="." index="9" unique_id=186974950]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 10841.785
+offset_bottom = 5480.893
+scale = Vector2(0.03396781, 0.03396781)
+draw_focus_border = true
+script = ExtResource("2_wxjey")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory" index="0" unique_id=284179036]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Item" type="Button" parent="Inventory/VBoxContainer" index="0" unique_id=878664380]
+visible = false
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.5764706)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvd6j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8ogyp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fcxjr")
+script = ExtResource("3_ukbuy")
+
+[node name="Sprite_Group" type="Control" parent="Inventory/VBoxContainer/Item" index="0" unique_id=858999398]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="0" unique_id=320375518]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 666.0
+offset_bottom = 662.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_2uqkk")
+expand_mode = 3
+
+[node name="Name" type="Label" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="1" unique_id=1257263239]
+layout_mode = 0
+offset_left = 670.00006
+offset_right = 3817.0
+offset_bottom = 666.0
+text = "Label Example"
+label_settings = ExtResource("5_66gbd")
+
+[node name="Tab" type="Label" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="2" unique_id=709862469]
+layout_mode = 0
+offset_left = 3821.0
+offset_right = 6972.0
+offset_bottom = 666.0
+text = "                       "
+label_settings = ExtResource("6_lfssd")
+
+[node name="Date" type="Label" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="3" unique_id=1191105281]
+layout_mode = 0
+offset_left = 6976.0
+offset_right = 10227.0
+offset_bottom = 666.0
+size_flags_horizontal = 0
+text = "04/12/55 23:59"
+label_settings = ExtResource("5_66gbd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amount of Items" type="Label" parent="." index="10" unique_id=1047697768]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 3863.0
+offset_bottom = 698.0
+scale = Vector2(0.025759423, 0.025759423)
+size_flags_horizontal = 0
+text = "1067 Total Items..."
+label_settings = ExtResource("5_66gbd")
+vertical_alignment = 1

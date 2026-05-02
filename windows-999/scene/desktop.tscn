@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://dag7r6mlaw0q7"]
+
+[ext_resource type="Script" uid="uid://cus4cah2hchlm" path="res://scene/selection_box.gd" id="2_l5gox"]
+[ext_resource type="Texture2D" uid="uid://df3pcqjy7q32v" path="res://sprite/SelectionBox.png" id="3_n4ug4"]
+[ext_resource type="PackedScene" uid="uid://bnmj17tts8v05" path="res://scene/Apps/trash_bin.tscn" id="5_nrcet"]
+[ext_resource type="Shader" uid="uid://t6a2tpolyg3u" path="res://scene/desktop.gdshader" id="5_s8ndo"]
+[ext_resource type="PackedScene" uid="uid://jj2kwm40aqmn" path="res://scene/Apps/folder.tscn" id="6_ji3gg"]
+[ext_resource type="Texture2D" uid="uid://cnp1en4kc88e0" path="res://sprite/Border.png" id="6_nrcet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4ug4"]
+size = Vector2(4, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8ndo"]
+shader = ExtResource("5_s8ndo")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.18000000855
+shader_parameter/scanlines_width = 0.05200000247
+shader_parameter/grille_opacity = 0.0470000022325
+shader_parameter/resolution = Vector2(1280, 800)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 2.0
+shader_parameter/roll_size = 11.18400053124
+shader_parameter/roll_variation = 0.29300001065762
+shader_parameter/distort_intensity = 0.0010000000475
+shader_parameter/noise_opacity = 0.0370000017575
+shader_parameter/noise_speed = 10.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.7499999933364734e-08
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.038000001805
+
+[node name="Desktop" type="Node2D" unique_id=1601468960 groups=["Desktop"]]
+
+[node name="Screen_Control" type="Control" parent="." unique_id=1594358848 groups=["ScreenControl"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 800.0
+mouse_filter = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1979106327]
+position = Vector2(640, 400)
+
+[node name="Selection_box" type="Node" parent="." unique_id=1334822117]
+script = ExtResource("2_l5gox")
+
+[node name="SelectionBox" type="NinePatchRect" parent="." unique_id=1554266241]
+offset_top = -256.0
+offset_right = 4.0
+offset_bottom = -252.0
+texture = ExtResource("3_n4ug4")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Area2D" type="Area2D" parent="SelectionBox" unique_id=1702670419 groups=["SelectionArea"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionBox/Area2D" unique_id=1094004404]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_n4ug4")
+debug_color = Color(0.9784995, 0, 0.39946595, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=497261865]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1373869617]
+z_index = 4096
+material = SubResource("ShaderMaterial_s8ndo")
+offset_right = 1280.0
+offset_bottom = 800.0
+mouse_filter = 2
+
+[node name="Border" type="Sprite2D" parent="." unique_id=2055656075]
+z_index = 200
+position = Vector2(640, 647.99994)
+scale = Vector2(3.9999998, 0.94999963)
+texture = ExtResource("6_nrcet")
+
+[node name="Folder" parent="." unique_id=1539757132 instance=ExtResource("6_ji3gg")]
+offset_left = 448.0
+offset_top = 176.0
+offset_right = 512.0
+offset_bottom = 248.0
+
+[node name="Folder2" parent="." unique_id=949823206 instance=ExtResource("6_ji3gg")]
+offset_left = 560.0
+offset_top = 176.0
+offset_right = 624.0
+offset_bottom = 248.0
+
+[node name="Folder3" parent="." unique_id=699511196 instance=ExtResource("6_ji3gg")]
+offset_left = 696.0
+offset_top = 176.0
+offset_right = 760.0
+offset_bottom = 248.0
+
+[node name="Folder4" parent="." unique_id=2045854363 instance=ExtResource("6_ji3gg")]
+offset_left = 448.0
+offset_top = 320.0
+offset_right = 512.0
+offset_bottom = 392.0
+
+[node name="Folder5" parent="." unique_id=1412145263 instance=ExtResource("6_ji3gg")]
+offset_left = 696.0
+offset_top = 312.0
+offset_right = 760.0
+offset_bottom = 384.0
+
+[node name="Folder6" parent="." unique_id=615693850 instance=ExtResource("6_ji3gg")]
+offset_left = 464.0
+offset_top = 440.0
+offset_right = 528.0
+offset_bottom = 512.0
+
+[node name="Folder7" parent="." unique_id=164372791 instance=ExtResource("6_ji3gg")]
+offset_left = 584.0
+offset_top = 432.0
+offset_right = 648.0
+offset_bottom = 504.0
+
+[node name="Folder8" parent="." unique_id=1239037849 instance=ExtResource("6_ji3gg")]
+offset_left = 704.0
+offset_top = 440.0
+offset_right = 768.0
+offset_bottom = 512.0
+
+[node name="Trash_Bin" parent="." unique_id=1138811342 instance=ExtResource("5_nrcet")]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 80.0
+
+[node name="Trash_Bin2" parent="." unique_id=620486454 instance=ExtResource("5_nrcet")]
+offset_left = 8.0
+offset_top = 96.0
+offset_right = 72.0
+offset_bottom = 168.0
+
+[node name="Trash_Bin3" parent="." unique_id=1744819039 instance=ExtResource("5_nrcet")]
+offset_left = 8.0
+offset_top = 200.0
+offset_right = 72.0
+offset_bottom = 272.0

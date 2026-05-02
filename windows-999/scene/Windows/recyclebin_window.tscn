@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://dvb336wymrcb7"]
+
+[ext_resource type="PackedScene" uid="uid://c6ygia1kpm5gq" path="res://scene/Windows/#base_window.tscn" id="1_j77pq"]
+[ext_resource type="Texture2D" uid="uid://drssg33geqqdh" path="res://sprite/App_icons.png" id="2_k6olc"]
+[ext_resource type="Texture2D" uid="uid://cpo82y7vkrswg" path="res://sprite/Window.png" id="2_vmfam"]
+[ext_resource type="Script" uid="uid://dy357143ipgpc" path="res://scene/Windows/inventory.gd" id="3_8r2bl"]
+[ext_resource type="Script" uid="uid://co1wket674kt6" path="res://scene/Windows/empty_recycling_bin.gd" id="3_h7jb2"]
+[ext_resource type="LabelSettings" uid="uid://dxtahmitrrykp" path="res://TextBlack.tres" id="3_jxm7n"]
+[ext_resource type="Script" uid="uid://b0d8f88l0gs1k" path="res://scene/Windows/Folder_Item.gd" id="3_kts5o"]
+[ext_resource type="LabelSettings" uid="uid://b1uas6mmrybmm" path="res://Text.tres" id="3_qfke7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxm7n"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r2bl"]
+bg_color = Color(0.3019608, 0.3019608, 0.3019608, 0.7529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kts5o"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22352941, 0.22352941, 0.22352941, 0.3254902)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfke7"]
+atlas = ExtResource("2_k6olc")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_727kh"]
+atlas = ExtResource("2_vmfam")
+region = Rect2(272, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dshks"]
+atlas = ExtResource("2_vmfam")
+region = Rect2(289, 16, 14, 16)
+
+[node name="Recyclebin_window" unique_id=777421535 instance=ExtResource("1_j77pq")]
+offset_right = 448.0
+offset_bottom = 256.0
+
+[node name="NinePatchRect" parent="." index="0" unique_id=1640479298]
+offset_right = 448.0
+offset_bottom = 256.0
+mouse_filter = 2
+
+[node name="FocusButton" parent="." index="1" unique_id=74436414]
+offset_right = 448.0
+offset_bottom = 256.0
+mouse_filter = 0
+
+[node name="DragButton" parent="." index="5" unique_id=1694614660]
+offset_right = 352.0
+
+[node name="Close" parent="." index="6" unique_id=1435366488]
+offset_left = 401.0
+offset_right = 419.0
+
+[node name="Minimize" parent="." index="7" unique_id=1509821338]
+offset_left = 360.0
+offset_right = 378.0
+
+[node name="Amount of Items" type="Label" parent="." index="8" unique_id=505350114]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 3863.0
+offset_bottom = 698.0
+scale = Vector2(0.025759423, 0.025759423)
+size_flags_horizontal = 0
+text = "1067 Total Items..."
+label_settings = ExtResource("3_jxm7n")
+vertical_alignment = 1
+
+[node name="Inventory" type="ScrollContainer" parent="." index="9" unique_id=16873146]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 12725.922
+offset_bottom = 5480.893
+scale = Vector2(0.03396781, 0.03396781)
+draw_focus_border = true
+script = ExtResource("3_8r2bl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory" index="0" unique_id=1554279431]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Item" type="Button" parent="Inventory/VBoxContainer" index="0" unique_id=494527569]
+visible = false
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.5764706)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jxm7n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8r2bl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kts5o")
+script = ExtResource("3_kts5o")
+
+[node name="Sprite_Group" type="Control" parent="Inventory/VBoxContainer/Item" index="0" unique_id=812954464]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="0" unique_id=256096667]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 666.0
+offset_bottom = 662.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_qfke7")
+expand_mode = 3
+
+[node name="Name" type="Label" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="1" unique_id=452287085]
+layout_mode = 0
+offset_left = 670.00006
+offset_right = 3817.0
+offset_bottom = 666.0
+text = "Label Example"
+label_settings = ExtResource("3_jxm7n")
+
+[node name="Tab" type="Label" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="2" unique_id=243262683]
+layout_mode = 0
+offset_left = 3821.0
+offset_right = 6972.0
+offset_bottom = 666.0
+text = "                       "
+label_settings = ExtResource("3_qfke7")
+
+[node name="Date" type="Label" parent="Inventory/VBoxContainer/Item/Sprite_Group" index="3" unique_id=538842004]
+layout_mode = 0
+offset_left = 6976.0
+offset_right = 10227.0
+offset_bottom = 666.0
+size_flags_horizontal = 0
+text = "04/12/55 23:59"
+label_settings = ExtResource("3_jxm7n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" parent="." index="10" unique_id=936641812]
+text = "Recycle Bin"
+
+[node name="Empty_Recycling_Bin" type="NinePatchRect" parent="." index="11" unique_id=1382217623]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 32.000004
+offset_right = 440.0
+offset_bottom = 56.0
+texture = SubResource("AtlasTexture_727kh")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Button" type="Button" parent="Empty_Recycling_Bin" index="0" unique_id=967839673]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_right = 142.0
+offset_bottom = 23.999996
+script = ExtResource("3_h7jb2")
+
+[node name="Tab" type="Label" parent="Empty_Recycling_Bin" index="1" unique_id=802957851]
+layout_mode = 0
+offset_left = 5.9999847
+offset_right = 4062.5264
+offset_bottom = 811.30524
+scale = Vector2(0.026130734, 0.026130734)
+text = "Empty Recycle Bin"
+label_settings = ExtResource("3_qfke7")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Empty_Recycling_Bin" index="2" unique_id=639207606]
+layout_mode = 0
+offset_left = 115.0
+offset_right = 139.0
+offset_bottom = 24.0
+mouse_filter = 0
+texture = SubResource("AtlasTexture_dshks")

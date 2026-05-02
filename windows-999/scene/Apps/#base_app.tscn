@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://djj4yyfukflq8"]
+
+[ext_resource type="Script" uid="uid://iuqmol2j4vm0" path="res://scene/Apps/App.gd" id="1_t7kj1"]
+[ext_resource type="Texture2D" uid="uid://drssg33geqqdh" path="res://sprite/App_icons.png" id="1_u5e5g"]
+[ext_resource type="Script" uid="uid://x4nmevm3qvlj" path="res://script/app_opening.gd" id="2_nikc3"]
+[ext_resource type="LabelSettings" uid="uid://b1uas6mmrybmm" path="res://Text.tres" id="3_u5e5g"]
+[ext_resource type="Script" uid="uid://bavhg2nyf5hp2" path="res://script/draggable.gd" id="3_yxad4"]
+[ext_resource type="Script" uid="uid://dxusc1kbje71" path="res://script/spawn_anim.gd" id="4_r363e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r363e"]
+atlas = ExtResource("1_u5e5g")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xon0w"]
+atlas = ExtResource("1_u5e5g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Gradient" id="Gradient_0o85u"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sdngh"]
+gradient = SubResource("Gradient_0o85u")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5e5g"]
+size = Vector2(64, 72)
+
+[node name="Base_App" type="Button" unique_id=1138811342]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 64.0
+offset_bottom = 72.0
+script = ExtResource("1_t7kj1")
+texture_icon = SubResource("AtlasTexture_r363e")
+
+[node name="AppDragging" type="Node" parent="." unique_id=11504885 node_paths=PackedStringArray("selection_box", "hover_box", "selection_area", "app_sprite_group")]
+script = ExtResource("3_yxad4")
+selection_box = NodePath("../Sprite_Group/SelectionBox")
+hover_box = NodePath("../Sprite_Group/HoverBox")
+selection_area = NodePath("../Area2D")
+app_sprite_group = NodePath("../Sprite_Group")
+
+[node name="AppOpening" type="Node" parent="." unique_id=1291675971]
+script = ExtResource("2_nikc3")
+
+[node name="Spawn_Anim" type="Node" parent="." unique_id=1751751459]
+script = ExtResource("4_r363e")
+
+[node name="Sprite_Group" type="Control" parent="." unique_id=748937213]
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 72.0
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Sprite_Group" unique_id=375139570]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_xon0w")
+
+[node name="SelectionBox" type="TextureRect" parent="Sprite_Group" unique_id=1742742582]
+visible = false
+modulate = Color(1, 1, 1, 0.05882353)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 72.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_sdngh")
+
+[node name="HoverBox" type="TextureRect" parent="Sprite_Group" unique_id=1168082628]
+visible = false
+modulate = Color(1, 1, 1, 0.05882353)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 72.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_sdngh")
+
+[node name="Label" type="Label" parent="Sprite_Group" unique_id=1831237444]
+layout_mode = 0
+offset_top = 51.87027
+offset_right = 3475.6243
+offset_bottom = 1138.0028
+scale = Vector2(0.018368017, 0.018368017)
+text = "Recycle Bin"
+label_settings = ExtResource("3_u5e5g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1992148771]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=172826306]
+position = Vector2(32, 36)
+shape = SubResource("RectangleShape2D_u5e5g")

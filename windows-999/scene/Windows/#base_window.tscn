@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://c6ygia1kpm5gq"]
+
+[ext_resource type="Texture2D" uid="uid://cpo82y7vkrswg" path="res://sprite/Window.png" id="1_igstr"]
+[ext_resource type="Script" uid="uid://icujoq7ew7mf" path="res://scene/Windows/Window.gd" id="1_pcdvc"]
+[ext_resource type="Script" uid="uid://dfc3w78rfsxai" path="res://scene/WindowDragging.gd" id="2_m8axp"]
+[ext_resource type="Script" uid="uid://c826u1klgevih" path="res://script/close.gd" id="4_g3ddo"]
+[ext_resource type="Script" uid="uid://c5i71rrj5gyme" path="res://script/spawn_taskbar_icon.gd" id="4_sfs8t"]
+[ext_resource type="Script" uid="uid://dxusc1kbje71" path="res://script/spawn_anim.gd" id="4_w10b1"]
+[ext_resource type="Texture2D" uid="uid://drssg33geqqdh" path="res://sprite/App_icons.png" id="5_dog0e"]
+[ext_resource type="Script" uid="uid://bdvxtin2yx8e4" path="res://script/minimize.gd" id="7_km36d"]
+[ext_resource type="LabelSettings" uid="uid://b1uas6mmrybmm" path="res://Text.tres" id="8_km36d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbqio"]
+atlas = ExtResource("1_igstr")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igstr"]
+atlas = ExtResource("1_igstr")
+region = Rect2(233, 3, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b6lb"]
+atlas = ExtResource("1_igstr")
+region = Rect2(187, 3, 18, 10)
+
+[node name="Base_Window" type="Control" unique_id=777421535]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("1_pcdvc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1640479298]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 192.0
+mouse_filter = 0
+texture = SubResource("AtlasTexture_vbqio")
+patch_margin_left = 8
+patch_margin_top = 32
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="FocusButton" type="Button" parent="." unique_id=74436414]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 27.0
+offset_right = 256.0
+offset_bottom = 192.0
+mouse_filter = 1
+
+[node name="Window_Dragging" type="Node" parent="." unique_id=1141524180]
+script = ExtResource("2_m8axp")
+
+[node name="Spawn_Anim" type="Node" parent="." unique_id=1517300400 node_paths=PackedStringArray("spawn_taskbar_icon")]
+script = ExtResource("4_w10b1")
+spawn_taskbar_icon = NodePath("../Spawn_Taskbar_Icon")
+
+[node name="Spawn_Taskbar_Icon" type="Node" parent="." unique_id=767359586]
+script = ExtResource("4_sfs8t")
+app_icon = ExtResource("5_dog0e")
+
+[node name="DragButton" type="Button" parent="." unique_id=1694614660]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 24.0
+
+[node name="Close" type="TextureButton" parent="." unique_id=1435366488]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 4.0
+offset_right = 232.0
+offset_bottom = 14.0
+scale = Vector2(2.013, 2.013)
+texture_normal = SubResource("AtlasTexture_igstr")
+script = ExtResource("4_g3ddo")
+
+[node name="Minimize" type="TextureButton" parent="." unique_id=1509821338]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 4.0
+offset_right = 191.0
+offset_bottom = 14.0
+scale = Vector2(2.01343, 2.01343)
+texture_normal = SubResource("AtlasTexture_2b6lb")
+script = ExtResource("7_km36d")
+
+[node name="Label" type="Label" parent="." unique_id=936641812]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 113.0
+offset_bottom = 25.0
+scale = Vector2(0.03638175, 0.03638175)
+text = "Window Title"
+label_settings = ExtResource("8_km36d")
