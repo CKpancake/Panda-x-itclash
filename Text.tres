@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://b1uas6mmrybmm"]
+
+[ext_resource type="FontFile" uid="uid://d20em6tbtyx4y" path="res://SegoeUIVF.ttf" id="1_q0ju8"]
+
+[resource]
+font = ExtResource("1_q0ju8")
+font_size = 500
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 100
+shadow_color = Color(0, 0, 0, 0.79607844)
+shadow_offset = Vector2(0, 15)
